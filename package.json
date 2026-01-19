@@ -1,0 +1,75 @@
+{
+    "name": "wp-adagent",
+    "version": "1.0.0",
+    "description": "Prebid.js Header Bidding Plugin for WordPress with Semantic Audience Matching",
+    "author": "Pubcontext <support@pubcontext.com>",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://github.com/pubcontext/WP-AdAgent",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/pubcontext/WP-AdAgent.git"
+    },
+    "bugs": {
+        "url": "https://github.com/pubcontext/WP-AdAgent/issues"
+    },
+    "keywords": [
+        "wordpress",
+        "prebid",
+        "header-bidding",
+        "advertising",
+        "semantic",
+        "dsp"
+    ],
+    "main": "assets/js/pubcontext-init.js",
+    "scripts": {
+        "build": "webpack --mode=production",
+        "build:dev": "webpack --mode=development",
+        "watch": "webpack --mode=development --watch",
+        "lint": "eslint assets/js/**/*.js",
+        "lint:fix": "eslint assets/js/**/*.js --fix",
+        "lint:css": "stylelint assets/css/**/*.css",
+        "lint:css:fix": "stylelint assets/css/**/*.css --fix",
+        "format": "prettier --write 'assets/**/*.{js,css}'",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:coverage": "jest --coverage",
+        "i18n:makepot": "wp-pot --src '**/*.php' --dest-file languages/wp-adagent.pot --domain wp-adagent",
+        "packages-update": "wp-scripts packages-update"
+    },
+    "devDependencies": {
+        "@babel/core": "^7.23.0",
+        "@babel/preset-env": "^7.23.0",
+        "@wordpress/babel-preset-default": "^7.30.0",
+        "@wordpress/eslint-plugin": "^17.5.0",
+        "@wordpress/scripts": "^26.15.0",
+        "babel-loader": "^9.1.3",
+        "css-loader": "^6.8.1",
+        "css-minimizer-webpack-plugin": "^5.0.1",
+        "eslint": "^8.52.0",
+        "eslint-config-prettier": "^9.0.0",
+        "jest": "^29.7.0",
+        "mini-css-extract-plugin": "^2.7.6",
+        "postcss": "^8.4.31",
+        "postcss-loader": "^7.3.3",
+        "postcss-preset-env": "^9.3.0",
+        "prettier": "^3.0.3",
+        "style-loader": "^3.3.3",
+        "stylelint": "^15.11.0",
+        "stylelint-config-recommended": "^13.0.0",
+        "stylelint-config-wordpress": "^21.0.0",
+        "terser-webpack-plugin": "^5.3.9",
+        "webpack": "^5.89.0",
+        "webpack-cli": "^5.1.4",
+        "wp-pot-cli": "^1.6.1"
+    },
+    "dependencies": {
+        "prebid.js": "^7.49.0"
+    },
+    "browserslist": [
+        "extends @wordpress/browserslist-config"
+    ],
+    "engines": {
+        "node": ">=16.0.0",
+        "npm": ">=8.0.0"
+    }
+}

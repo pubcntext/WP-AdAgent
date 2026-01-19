@@ -1,0 +1,164 @@
+/**
+ * WP-AdAgent Frontend Placement Styles
+ *
+ * @package WP_AdAgent
+ * @since   1.0.0
+ */
+
+/* ==========================================================================
+   Placement Container
+   ========================================================================== */
+.wp-adagent-placement {
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    min-height: 50px;
+    position: relative;
+}
+
+.wp-adagent-placement iframe {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+/* ==========================================================================
+   Loading State
+   ========================================================================== */
+.wp-adagent-placement:not(.ad-loaded):not(.no-bids)::before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: wp-adagent-loading 1.5s infinite;
+    border-radius: 4px;
+}
+
+@keyframes wp-adagent-loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* ==========================================================================
+   No Bids State
+   ========================================================================== */
+.wp-adagent-placement.no-bids {
+    /* Hide by default when no bids */
+    display: none;
+}
+
+/* Show placeholder for logged-in admins */
+body.logged-in.admin-bar .wp-adagent-placement.no-bids {
+    display: block;
+    background: #f9f9f9;
+    border: 2px dashed #ddd;
+    padding: 20px;
+    color: #666;
+    font-size: 12px;
+}
+
+body.logged-in.admin-bar .wp-adagent-placement.no-bids::after {
+    content: 'No bids received for this placement';
+}
+
+/* ==========================================================================
+   Alignment
+   ========================================================================== */
+.wp-adagent-placement.alignleft {
+    float: left;
+    margin-right: 20px;
+    margin-left: 0;
+}
+
+.wp-adagent-placement.alignright {
+    float: right;
+    margin-left: 20px;
+    margin-right: 0;
+}
+
+.wp-adagent-placement.aligncenter {
+    clear: both;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wp-adagent-placement.alignwide {
+    max-width: none;
+    width: 100%;
+}
+
+.wp-adagent-placement.alignfull {
+    max-width: none;
+    width: 100vw;
+    margin-left: calc(-50vw + 50%);
+}
+
+/* ==========================================================================
+   Analytics Overlay (Admin Only)
+   ========================================================================== */
+.wp-adagent-placement[data-show-analytics="true"] {
+    position: relative;
+}
+
+.wp-adagent-analytics-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    font-size: 10px;
+    padding: 5px 10px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    z-index: 100;
+    display: flex;
+    gap: 15px;
+}
+
+.wp-adagent-analytics-overlay span {
+    white-space: nowrap;
+}
+
+/* ==========================================================================
+   Error State
+   ========================================================================== */
+.wp-adagent-error {
+    background: #fcf0f1;
+    border: 1px solid #d63638;
+    color: #d63638;
+    padding: 15px;
+    border-radius: 4px;
+    font-size: 14px;
+    text-align: center;
+}
+
+/* ==========================================================================
+   Responsive
+   ========================================================================== */
+@media screen and (max-width: 768px) {
+    .wp-adagent-placement.alignleft,
+    .wp-adagent-placement.alignright {
+        float: none;
+        margin: 20px auto;
+    }
+
+    .wp-adagent-placement iframe {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* ==========================================================================
+   Print Styles
+   ========================================================================== */
+@media print {
+    .wp-adagent-placement {
+        display: none !important;
+    }
+}
